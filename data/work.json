@@ -1,0 +1,125 @@
+{
+  "projects": [
+    {
+      "id": "qr-shield",
+      "title": "QR Shield",
+      "category": "",
+      "year": "",
+      "shortDescription": "Add a short description in work.json.",
+      "heroImage": "/assets/projects/qr-shield/hero.jpg",
+      "github": "",
+      "technologies": [],
+      "status": "",
+      "featuredOnHome": true,
+      "caseStudy": {
+        "problem": "",
+        "background": "",
+        "procedure": "",
+        "solution": "",
+        "results": "",
+        "images": []
+      }
+    },
+    {
+      "id": "study-hub",
+      "title": "Study Hub",
+      "category": "",
+      "year": "",
+      "shortDescription": "Add a short description in work.json.",
+      "heroImage": "/assets/projects/study-hub/hero.jpg",
+      "github": "",
+      "technologies": [],
+      "status": "",
+      "featuredOnHome": true,
+      "caseStudy": {
+        "problem": "",
+        "background": "",
+        "procedure": "",
+        "solution": "",
+        "results": "",
+        "images": []
+      }
+    },
+    {
+      "id": "echo",
+      "title": "E.C.H.O",
+      "category": "",
+      "year": "",
+      "shortDescription": "Add a short description in work.json.",
+      "heroImage": "/assets/projects/echo/hero.jpg",
+      "github": "",
+      "technologies": [],
+      "status": "",
+      "featuredOnHome": false,
+      "caseStudy": {
+        "problem": "",
+        "background": "",
+        "procedure": "",
+        "solution": "",
+        "results": "",
+        "images": []
+      }
+    },
+    {
+      "id": "substrate",
+      "title": "Substrate",
+      "category": "",
+      "year": "",
+      "shortDescription": "Add a short description in work.json.",
+      "heroImage": "/assets/projects/substrate/hero.jpg",
+      "github": "",
+      "technologies": [],
+      "status": "",
+      "featuredOnHome": false,
+      "caseStudy": {
+        "problem": "",
+        "background": "",
+        "procedure": "",
+        "solution": "",
+        "results": "",
+        "images": []
+      }
+    },
+    {
+      "id": "project-05",
+      "title": "Project 5",
+      "category": "",
+      "year": "",
+      "shortDescription": "Add a short description in work.json.",
+      "heroImage": "/assets/projects/project-05/hero.jpg",
+      "github": "",
+      "technologies": [],
+      "status": "",
+      "featuredOnHome": false,
+      "caseStudy": {
+        "problem": "",
+        "background": "",
+        "procedure": "",
+        "solution": "",
+        "results": "",
+        "images": []
+      }
+    },
+    {
+      "id": "project-06",
+      "title": "Project 6",
+      "category": "",
+      "year": "",
+      "shortDescription": "Add a short description in work.json.",
+      "heroImage": "/assets/projects/project-06/hero.jpg",
+      "github": "",
+      "technologies": [],
+      "status": "",
+      "featuredOnHome": false,
+      "caseStudy": {
+        "problem": "",
+        "background": "",
+        "procedure": "",
+        "solution": "",
+        "results": "",
+        "images": []
+      }
+    }
+  ],
+  "experience": []
+}

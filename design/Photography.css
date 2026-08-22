@@ -1,0 +1,488 @@
+/* ==========================================================================
+   Photography — 04 — SEE
+   Monochrome interface. Natural-color photography. Editorial + cinematic.
+   ========================================================================== */
+
+.photography-page {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  background: #050505;
+  color: #f2f2f2;
+  /* NOTE: do not set overflow-x here. Setting only one overflow axis
+     forces the other to compute to "auto" (CSSOM spec), which turns
+     this element into a scroll container and breaks position:sticky
+     on .photo-stack-viewport below (sticky resolves against the
+     nearest scrolling ancestor). Horizontal overflow is instead
+     prevented by .photo-stack-viewport's own overflow:hidden and by
+     bounding all frame widths to <= 100vw. */
+}
+
+.photography-page * {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Navigation                                                              */
+/* ---------------------------------------------------------------------- */
+
+.photo-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem clamp(1.25rem, 4vw, 3rem);
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.photo-nav a,
+.photo-nav button {
+  pointer-events: auto;
+}
+
+.photo-nav-logo {
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #f2f2f2;
+  text-decoration: none;
+  border: 1px solid rgba(242, 242, 242, 0.4);
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: border-color 0.3s ease;
+}
+
+.photo-nav-logo:hover,
+.photo-nav-logo:focus-visible {
+  border-color: #f2f2f2;
+}
+
+.photo-nav-links {
+  display: flex;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.photo-nav-links a {
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  position: relative;
+}
+
+.photo-nav-links a:hover,
+.photo-nav-links a:focus-visible {
+  opacity: 1;
+}
+
+.photo-nav-links a.is-current {
+  opacity: 1;
+}
+
+.photo-nav-links a.is-current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.35rem;
+  height: 1px;
+  background: currentColor;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Chapter cards (open + close)                                           */
+/* ---------------------------------------------------------------------- */
+
+.photo-chapter {
+  position: relative;
+  height: 100svh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 clamp(1.5rem, 6vw, 6rem);
+  background: #050505;
+}
+
+.photo-chapter-index {
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(242, 242, 242, 0.55);
+  margin: 0 0 1.25rem;
+  font-weight: 500;
+}
+
+.photo-chapter-title {
+  font-size: clamp(3.5rem, 11vw, 8.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.photo-chapter-sub {
+  margin-top: 1.5rem;
+  max-width: 34ch;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.6;
+  color: rgba(242, 242, 242, 0.6);
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Act I → Act II transition                                              */
+/* ---------------------------------------------------------------------- */
+
+.photo-act-transition {
+  position: relative;
+  min-height: 46svh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #050505;
+}
+
+.photo-act-transition-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(242, 242, 242, 0.4);
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.photo-act-transition.is-visible .photo-act-transition-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-act-transition-label {
+    transition: opacity 0.4s ease;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Scroll-driven photo stack                                              */
+/* ---------------------------------------------------------------------- */
+
+.photo-stack-track {
+  position: relative;
+  width: 100%;
+}
+
+.photo-stack-viewport {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  background: #050505;
+}
+
+.photo-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+
+.photo-layer-frame {
+  position: relative;
+  width: min(84vw, 1400px);
+  height: min(78svh, 900px);
+  overflow: hidden;
+}
+
+.photo-layer--landscape .photo-layer-frame {
+  width: min(86vw, 1500px);
+  height: min(70svh, 820px);
+}
+
+.photo-layer--portrait .photo-layer-frame {
+  width: min(48vw, 720px);
+  height: min(84svh, 980px);
+}
+
+.photo-layer--square .photo-layer-frame {
+  width: min(66vw, 900px);
+  height: min(66vw, 900px);
+  max-height: 82svh;
+}
+
+.photo-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: none; /* photography retains natural color, never grayscale */
+}
+
+.photo-layer--current {
+  z-index: 3;
+}
+
+.photo-layer--next {
+  z-index: 2;
+}
+
+/* Subtle editorial meta, secondary to the photograph */
+.photo-meta {
+  position: absolute;
+  left: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(1.5rem, 4vw, 3rem);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.photo-meta-count {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: rgba(242, 242, 242, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+
+.photo-meta-title {
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #f2f2f2;
+}
+
+.photo-meta-caption {
+  font-size: 0.82rem;
+  color: rgba(242, 242, 242, 0.5);
+  max-width: 40ch;
+  line-height: 1.5;
+}
+
+.photo-progress {
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(1.5rem, 4vw, 3rem);
+  z-index: 5;
+  width: 1px;
+  height: 90px;
+  background: rgba(242, 242, 242, 0.18);
+  pointer-events: none;
+}
+
+.photo-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #f2f2f2;
+  transition: height 0.1s linear;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Reduced motion                                                         */
+/* ---------------------------------------------------------------------- */
+
+.photography-page.is-reduced-motion .photo-layer {
+  transition: opacity 0.6s ease;
+}
+
+.photography-page.is-reduced-motion .photo-layer-frame {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-layer {
+    transition: opacity 0.6s ease;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Act II — editorial gallery                                             */
+/* ---------------------------------------------------------------------- */
+
+.photo-gallery-section {
+  position: relative;
+  width: 100%;
+  background: #050505;
+}
+
+/* The single equal outer border/margin around the whole gallery.
+   Everything inside touches — gap is 0 on the grid itself. */
+.photo-gallery-frame {
+  padding: clamp(0.75rem, 2.2vw, 2rem);
+}
+
+.photo-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: minmax(160px, 16vw);
+  grid-auto-flow: dense;
+  gap: 0; /* photographs touch directly, only the outer frame has spacing */
+  width: 100%;
+}
+
+.photo-gallery-item {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.photo-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: none; /* photography retains natural color */
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.photo-gallery-item:hover img,
+.photo-gallery-item:focus-within img {
+  transform: scale(1.03);
+  filter: brightness(1.06);
+}
+
+/* Orientation-driven spans create a varied, composed wall rather than
+   a uniform thumbnail grid. Values are derived from photography.json's
+   "orientation" field, not hardcoded per photo. */
+.photo-gallery-item--landscape {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.photo-gallery-item--portrait {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.photo-gallery-item--square {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-gallery-item img {
+    transition: none;
+  }
+
+  .photo-gallery-item:hover img,
+  .photo-gallery-item:focus-within img {
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive                                                             */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .photo-layer-frame,
+  .photo-layer--landscape .photo-layer-frame,
+  .photo-layer--portrait .photo-layer-frame,
+  .photo-layer--square .photo-layer-frame {
+    width: 92vw;
+    height: 62svh;
+    max-height: 62svh;
+  }
+
+  .photo-chapter-title {
+    font-size: clamp(2.75rem, 13vw, 4.5rem);
+  }
+
+  .photo-nav-links {
+    gap: 1.1rem;
+  }
+
+  .photo-progress {
+    display: none;
+  }
+
+  .photo-gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(140px, 22vw);
+  }
+
+  .photo-gallery-item--landscape {
+    grid-column: span 2;
+  }
+
+  .photo-gallery-item--portrait {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .photo-gallery-item--square {
+    grid-column: span 2;
+  }
+
+  .photo-act-transition {
+    min-height: 34svh;
+  }
+}
+
+@media (max-width: 560px) {
+  .photo-layer-frame,
+  .photo-layer--landscape .photo-layer-frame,
+  .photo-layer--portrait .photo-layer-frame,
+  .photo-layer--square .photo-layer-frame {
+    width: 94vw;
+    height: 56svh;
+  }
+
+  .photo-nav-links {
+    gap: 0.85rem;
+  }
+
+  .photo-nav-links a {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .photo-meta-caption {
+    display: none;
+  }
+
+  .photo-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(130px, 44vw);
+  }
+
+  .photo-gallery-item--landscape,
+  .photo-gallery-item--square {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .photo-gallery-item--portrait {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+}

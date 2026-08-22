@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import "../design/About.css";
 /**
  * About.jsx — 02 — DISCOVER
  *

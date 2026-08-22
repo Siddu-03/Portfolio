@@ -1,0 +1,313 @@
+/* ==========================================================================
+   Work.css — 03 — BUILD
+   Monochrome, editorial, spatial constellation of projects.
+   ========================================================================== */
+
+.work-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg, #0a0a0a);
+  color: var(--fg, #f2f2f2);
+  overflow-x: hidden;
+  padding: 12vh 6vw 10vh;
+  box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------------- */
+/* Chapter title card                                                    */
+/* -------------------------------------------------------------------- */
+
+.work-chapter {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 4vh;
+}
+
+.work-chapter__index {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  letter-spacing: 0.2em;
+  opacity: 0.5;
+}
+
+.work-chapter__title {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------- */
+/* Constellation field                                                   */
+/* -------------------------------------------------------------------- */
+
+.work-constellation {
+  position: relative;
+  width: 100%;
+  height: 130vh;
+  min-height: 720px;
+}
+
+.work-constellation__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.work-constellation__line {
+  stroke: currentColor;
+  stroke-width: 0.08;
+  opacity: 0.08;
+  vector-effect: non-scaling-stroke;
+}
+
+.work-empty {
+  opacity: 0.6;
+  font-size: 1rem;
+}
+
+/* -------------------------------------------------------------------- */
+/* Individual project object                                             */
+/* -------------------------------------------------------------------- */
+
+.work-project {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 220px;
+  text-decoration: none;
+  color: inherit;
+  transform-style: preserve-3d;
+  perspective: 900px;
+  transform:
+    translate(-50%, -50%)
+    scale(calc(var(--scale, 1) * 0.9))
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
+  opacity: 0;
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 700ms ease,
+    filter 320ms ease;
+  will-change: transform;
+  cursor: pointer;
+  outline: none;
+}
+
+.work-project.is-revealed {
+  opacity: 1;
+  transform:
+    translate(-50%, -50%)
+    scale(var(--scale, 1))
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.work-project.is-active,
+.work-project:focus-visible {
+  z-index: 5;
+}
+
+.work-project.is-active {
+  transform:
+    translate(-50%, -50%)
+    translateY(-6px)
+    scale(calc(var(--scale, 1) * 1.06))
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
+}
+
+.work-project:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+.work-project__index {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  opacity: 0.4;
+}
+
+.work-project__title {
+  font-size: clamp(1.15rem, 2vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.work-project__desc {
+  font-size: 0.8rem;
+  line-height: 1.35;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  transition: opacity 260ms ease, transform 260ms ease, max-height 260ms ease;
+}
+
+.work-project.is-active .work-project__desc,
+.work-project:focus-visible .work-project__desc {
+  opacity: 0.72;
+  max-height: 3rem;
+  transform: translateY(0);
+}
+
+/* -------------------------------------------------------------------- */
+/* Experience archive                                                    */
+/* -------------------------------------------------------------------- */
+
+.work-experience {
+  margin-top: 14vh;
+  padding-top: 6vh;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.work-experience__label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  opacity: 0.45;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+
+.work-experience__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.work-experience__entry {
+  cursor: default;
+  outline: none;
+}
+
+.work-experience__role {
+  display: inline-block;
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.work-experience__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 320ms ease, opacity 280ms ease;
+  font-size: 0.85rem;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.work-experience__entry:hover .work-experience__details,
+.work-experience__entry:focus-visible .work-experience__details {
+  max-height: 12rem;
+  opacity: 1;
+  margin-top: 0.5rem;
+}
+
+.work-experience__org,
+.work-experience__period {
+  opacity: 0.6;
+}
+
+.work-experience__resp {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+/* -------------------------------------------------------------------- */
+/* Reduced motion                                                        */
+/* -------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .work-project {
+    transition: opacity 200ms ease;
+    transform: translate(-50%, -50%) scale(var(--scale, 1)) !important;
+  }
+  .work-project.is-active {
+    transform: translate(-50%, -50%) scale(var(--scale, 1)) !important;
+  }
+  .work-experience__details {
+    transition: none;
+  }
+}
+
+/* -------------------------------------------------------------------- */
+/* Tablet                                                                 */
+/* -------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .work-constellation {
+    height: 150vh;
+  }
+  .work-project {
+    max-width: 180px;
+  }
+}
+
+/* -------------------------------------------------------------------- */
+/* Mobile — deliberate recomposition, not a shrunken desktop             */
+/* -------------------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  .work-page {
+    padding: 10vh 6vw 8vh;
+  }
+
+  .work-constellation {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .work-constellation__lines {
+    display: none;
+  }
+
+  .work-project {
+    position: static;
+    max-width: none;
+    width: 100%;
+    transform: none !important;
+    opacity: 0;
+    transition: opacity 500ms ease;
+  }
+
+  .work-project.is-revealed {
+    opacity: 1;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .work-project.is-active,
+  .work-project:focus-visible {
+    transform: none !important;
+  }
+
+  .work-project__desc {
+    opacity: 0.72;
+    max-height: 3rem;
+    transform: none;
+  }
+
+  .work-experience {
+    margin-top: 6vh;
+  }
+
+  .work-experience__details {
+    max-height: none;
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.65);
+  }
+}
