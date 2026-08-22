@@ -1,0 +1,108 @@
+.home-temp {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-temp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+}
+
+.home-temp-logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.home-temp-links {
+  display: flex;
+  gap: 24px;
+}
+
+.home-temp-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+}
+
+.home-temp-links a:hover,
+.home-temp-links a:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.home-temp-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+  gap: 24px;
+}
+
+.home-temp-name {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.home-temp-note {
+  font-size: 16px;
+  opacity: 0.6;
+  margin: 0;
+}
+
+.home-temp-main-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.home-temp-main-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+}
+
+.home-temp-main-links a:hover,
+.home-temp-main-links a:focus-visible {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .home-temp-nav {
+    padding: 20px;
+  }
+
+  .home-temp-links {
+    gap: 16px;
+  }
+
+  .home-temp-links a {
+    font-size: 13px;
+  }
+}
