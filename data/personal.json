@@ -1,0 +1,167 @@
+{
+  "_comment": "===================================================================== IDENTITY — core name, role, location info ===================================================================== Used site-wide by Home, About, navigation, and metadata.",
+  "identity": {
+    "fullName": "Siddeshwarprasad K R",
+    "siteDisplayName": "Siddeshwarprasad K R",
+    "homeDisplayName": "SIDDESHWARPRASAD K R",
+    "shortName": "Siddu",
+    "role": "Student",
+    "hometown": "Hassan, Karnataka",
+    "currentLocation": "Bengaluru, Karnataka"
+  },
+
+  "_comment_education": "===================================================================== EDUCATION — structured for dynamic rendering on About page =====================================================================",
+  "education": {
+    "university": "RV University",
+    "degree": "B.Tech(Hons.)",
+    "major": "Cybersecurity",
+    "minor": "Business Administration",
+    "expectedGraduation": "2028",
+    "currentSemester": "5th semester",
+    "currentYear": "3rd year"
+  },
+
+  "_comment_hero": "===================================================================== HERO IMAGE — used on Home page. Finalized path, do not alter. =====================================================================",
+  "heroImage": "/assets/hero/hero.jpg",
+
+  "_comment_about": "===================================================================== ABOUT / PERSONAL INTRODUCTION — short content blocks for the About page. Not meant to be rendered as one paragraph. =====================================================================",
+  "about": {
+    "shortIntro": "Cybersecurity student who loves physics, design, and photography.",
+    "traits": [
+      "Passionate about cybersecurity and security",
+      "Loves physics",
+      "Enjoys designing",
+      "Enjoys photography",
+      "Socialises easily and connects with people quickly",
+      "Hopes to work while travelling",
+      "Wants to live independently"
+    ]
+  },
+
+  "_comment_story": "===================================================================== PERSONAL STORY — origin story, intellectual journey, growth, college life, future aspiration. Kept short and human, not a long biography. =====================================================================",
+  "personalStory": {
+    "cybersecurityOrigin": {
+      "title": "How it started",
+      "content": "The interest in cybersecurity began after learning about Anonymous and reading about an incident involving the group taking down a government website in connection with preventing the mass killing of seals. The reaction was simple: 'Yeah, I also have to make a difference in the world — a meaningful difference.'"
+    },
+    "intellectualJourney": {
+      "title": "Why cybersecurity",
+      "content": "The degree was chosen out of love and passion for the field. A turning point was discovering a strength in theoretical physics and mathematics, which led toward a field that felt intellectually similar."
+    },
+    "currentGrowth": {
+      "title": "What I'm working on now",
+      "content": "Currently and always cybersecurity and myself personally."
+    },
+    "collegeLifeChange": {
+      "title": "Since starting college",
+      "content": "I have been introduced to the real world and also human feelings and emotions."
+    },
+    "futureAspiration": {
+      "title": "Looking ahead",
+      "content": "Work while travelling.",
+      "coreIdea": "Independence"
+    }
+  },
+
+  "_comment_interests": "===================================================================== INTERESTS — grouped where they naturally relate. Excludes Fashion and Sports per instructions. =====================================================================",
+  "interests": [
+    {
+      "group": "Cybersecurity & Tech",
+      "items": ["Cybersecurity", "Web Development", "AI/ML"],
+      "description": "The core of what I study and keep coming back to."
+    },
+    {
+      "group": "Physics & Space",
+      "items": ["Physics", "Space"],
+      "description": "Theoretical physics and space are just endlessly interesting to me."
+    },
+    {
+      "group": "Design & Photography",
+      "items": ["Design", "Photography"],
+      "description": "I like making things look good, whether it's a frame or a layout."
+    },
+    {
+      "group": "Cinema & Marvel",
+      "items": ["Cinema", "Marvel"],
+      "description": "Good stories, especially the ones with a lot of world-building."
+    },
+    {
+      "group": "Books & History",
+      "items": ["Books / Reading", "History"],
+      "description": "I like understanding how things and ideas came to be."
+    },
+    {
+      "group": "Music & Guitar",
+      "items": ["Music", "Guitar"],
+      "description": "Music I listen to a lot, guitar I play when I get the time."
+    },
+    {
+      "group": "Travel",
+      "items": ["Travel"],
+      "description": "Seeing new places, ideally while working."
+    }
+  ],
+
+  "_comment_working_style": "===================================================================== WORKING STYLE — personal character and habits =====================================================================",
+  "workingStyle": [
+    "Passionate about the work",
+    "Works well in teams",
+    "Comfortable leading a team",
+    "Strong focus on documentation",
+    "Values the work itself rather than simply appearing busy",
+    "Believes in consistency",
+    "Prefers small continuous pieces of work rather than large inconsistent chunks",
+    "Values simplicity"
+  ],
+
+  "_comment_values": "===================================================================== CORE VALUES — structured philosophy/value entries =====================================================================",
+  "values": [
+    { "value": "Simplicity" },
+    { "value": "Documentation" },
+    { "value": "Consistency" },
+    { "value": "Small continuous progress" },
+    { "value": "Useful work" },
+    { "value": "Clear design" }
+  ],
+
+  "_comment_view": "===================================================================== PERSONAL VIEW ON TECH, DESIGN & BUILDING =====================================================================",
+  "view": {
+    "tech": "Tech should help us, not replace us.",
+    "design": "Design should make things look better, not make them complex.",
+    "building": "Building should be consistent work."
+  },
+
+  "_comment_philosophy": "===================================================================== PERSONAL PHILOSOPHY — dedicated quote field =====================================================================",
+  "philosophy": "You can be anything you want in life but not everything.",
+
+  "_comment_positioning": "===================================================================== INTERNAL POSITIONING PRINCIPLE — for tone guidance only, not meant to be displayed literally on the site =====================================================================",
+  "positioningPrinciple": {
+    "note": "Internal guidance only — do not render literally on the website.",
+    "guidelines": [
+      "Competence without arrogance",
+      "Curiosity without pretending to know everything",
+      "Personality without oversharing",
+      "Ambition without exaggerated claims"
+    ]
+  },
+
+  "_comment_contact": "===================================================================== CONTACT — raw contact details. Email/phone stored here for general use; Contact page itself uses a form, not a direct email display. =====================================================================",
+  "contact": {
+    "name": "Siddeshwarprasad K R",
+    "email": "siddeshwarprasadkr@gmail.com",
+    "phone": "6364659768"
+  },
+
+  "_comment_social": "===================================================================== SOCIAL PROFILES — editable links. Displayed as text-only links on Contact page (LinkedIn, GitHub, Instagram). =====================================================================",
+  "social": {
+    "github": "https://github.com/Siddu-03",
+    "linkedin": "https://www.linkedin.com/in/siddeshwarprasadkr",
+    "instagram": "https://www.instagram.com/_siddu_.03",
+    "resume": "PLACEHOLDER_RESUME_URL"
+  },
+
+  "_comment_seo": "===================================================================== SEO / METADATA BIO — concise, natural, no exaggerated language =====================================================================",
+  "seo": {
+    "bio": "Siddeshwarprasad K R is a cybersecurity student interested in security, technology, physics, design, and photography."
+  }
+}
